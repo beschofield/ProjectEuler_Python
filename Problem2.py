@@ -8,17 +8,23 @@ By considering the terms in the Fibonacci sequence
 whose values do not exceed four million, find the sum of the even-valued terms.
 '''
 
-def algorithm(max):
+def algorithm(maxValue):
     nums = []
-    theSum = 0
     nums.append(1)
     nums.append(2)
 
-    for x in range (0, max):
-        nums.append(fibonacci(nums[x], nums[x + 1]))
+    theSum = 0
+    x = 0
 
-        if (x % 2 != 0):
-            theSum += nums[x]
+    # building the list
+    while (nums[len(nums) - 1] < maxValue):
+        nums.append(fibonacci(nums[x], nums[x + 1]))
+        x = x + 1
+
+    for n in nums:
+        if (n % 2 == 0):
+            print(n)
+            theSum += n
 
     return theSum
 
@@ -27,10 +33,10 @@ def fibonacci(num1, num2):
 
 def main():
     # verifying with an example
-    print (str(algorithm(10)) + " should equal " + str(2 + 5 + 13 + 34 + 89))
+    print (str(algorithm(70)) + " should equal " + str(44))
 
     # solving the problem
-    # print ("answer: " + str(algorithm(4000000)))
+    print ("answer: " + str(algorithm(4000000)))
 
 if __name__ == '__main__':
     main()
