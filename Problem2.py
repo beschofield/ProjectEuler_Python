@@ -8,4 +8,31 @@ By considering the terms in the Fibonacci sequence
 whose values do not exceed four million, find the sum of the even-valued terms.
 '''
 
-#
+def algorithm(max):
+    nums = []
+    nums.append(1)
+    nums.append(2)
+
+    for x in range (0, max - 2):
+        nums.append(fibonacci(nums[x], nums[x + 1]))
+
+    return evenSum(nums, max)
+
+def fibonacci(num1, num2):
+    return (num1 + num2)
+
+def evenSum(nums, max):
+    theSum = 0
+
+    for x in range (0, max):
+        if ((x) % 2 != 0):
+            theSum += nums[x]
+
+    return theSum
+
+def main():
+    # verifying with the example
+    print (str(algorithm(10)) + " should equal " + str(2 + 5 + 13 + 34 + 89))
+
+if __name__ == '__main__':
+    main()
