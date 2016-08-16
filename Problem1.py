@@ -5,35 +5,23 @@ we get 3, 5, 6 and 9. The sum of these multiples is 23.
 Find the sum of all the multiples of 3 or 5 below 1000.
 '''
 
-# straightforward approach
-# first verify the example
+# optimized a bit
 
-threes = []
-fives = []
-firstSum = 0
+def algorithm(min, max):
+    nums = []
 
-for x in range(1, 10):
-    if (x % 3 == 0):
-        threes.append(x)
+    for x in range(min, max):
+        if (x % 3 == 0 or x % 5 == 0):
+            nums.append(x)
 
-    elif (x % 5 == 0):
-        fives.append(x)
+    return nums
 
-firstSum = sum(threes) + sum(fives)
-print ("sum of (1, 10): " + str(firstSum))
+def main():
+    # verifying with the example
+    print ("sum of (1, 10): " + str(sum(algorithm(1, 10))))
 
-# then solve the problem
+    # finding the solution
+    print ("sum of (1, 1000): " + str(sum(algorithm(1, 1000))))
 
-threes = []
-fives = []
-secondSum = 0
-
-for x in range(1, 1000):
-    if (x % 3 == 0):
-        threes.append(x)
-
-    elif (x % 5 == 0):
-        fives.append(x)
-
-firstSum = sum(threes) + sum(fives)
-print ("sum of (1, 1000): " + str(firstSum))
+if __name__ == '__main__':
+    main()
